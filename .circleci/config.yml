@@ -14,8 +14,10 @@ jobs:
       TZ: "America/Toronto"
     steps:
       - run:
-          name: Accept Android Licenses
-          command: yes | sdkmanager --licenses && yes | sdkmanager --update  || exit 0
+          name: Install GAWK - GNU awk
+          command: |
+            sudo apt-get update
+            sudo apt-get -y install gawk
       - run:
           name: Update SDK
           command: echo y | sdkmanager "build-tools;29.0.3" "platform-tools" "platforms;android-29"
